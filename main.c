@@ -18,6 +18,18 @@ int main(int argc, char** argv) {
     }
     
     // Aggiunta degli elementi alla pila
+    int valoreRitorno;
+    char scelta = 's';
+    while(scelta == 's'){
+        printf("Inserisci il nome: ");
+        scanf("%s", s.nome);
+        printf("Inserisci il cognome: ");
+        scanf("%s", s.cognome);
+        valoreRitorno = push(&stack, s);
+        
+        printf("Vuoi inserire un altro studente (s/n)");
+        scanf("%d", &scelta);
+    }
     while(fread(&s, sizeof(studente), 1, inputFile) == 1) {
         // s contiene i dati dello studente letto
         

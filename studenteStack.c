@@ -11,7 +11,15 @@
 int push(studenteStack *stack, studente newStudente) {
     int r=0;
     
-    // TODO Implementa il corpo della funzione
+    newStudente = (studente)malloc(sizeof(studente));
+    if(newStudente != NULL){
+        
+        stack->s = newStudente;
+        stack->next = NULL;
+                 
+    }else{
+        r=-1;
+    }
     
     return r;
 }
