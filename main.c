@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "studenteStack.h"
 
+
+
 const char fname[]="studenti.dat";
 
 int main(int argc, char** argv) {
@@ -17,23 +19,15 @@ int main(int argc, char** argv) {
         exit(-1);
     }
     
-    // Aggiunta degli elementi alla pila
-    int valoreRitorno;
-    char scelta = 's';
-    while(scelta == 's'){
-        printf("Inserisci il nome: ");
-        scanf("%s", s.nome);
-        printf("Inserisci il cognome: ");
-        scanf("%s", s.cognome);
-        valoreRitorno = push(&stack, s);
-        
-        printf("Vuoi inserire un altro studente (s/n)");
-        scanf("%d", &scelta);
-    }
+    // Aggiunta degli elementi alla pila   
     while(fread(&s, sizeof(studente), 1, inputFile) == 1) {
         // s contiene i dati dello studente letto
         
-        // TODO Implementa il codice per la gestione della chiamata a push
+        returnValue = push(&stack,s);
+        if(returnValue == -1){
+            printf("Si è verificato un errore \n");
+            exit(1);
+        }
     }
     fclose(inputFile);
     
