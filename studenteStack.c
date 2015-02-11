@@ -11,7 +11,18 @@
 int push(studenteStack *stack, studente newStudente) {
     int r=0;
     
-    // TODO Implementa il corpo della funzione
+    stackElement *newElement;
+    
+    newElement = (stackElement *)malloc(sizeof(stackElement));
+    if(newElement != NULL) {
+        newElement->s = newStudente;
+//        strcpy(newElement->s.nome, newStudente.nome);
+//        strcpy(newElement->s.cognome, newStudente.cognome);
+        newElement->next = *stack;
+        *stack = newElement;
+    }
+    else
+        r = -1;
     
     return r;
 }
@@ -23,8 +34,19 @@ int push(studenteStack *stack, studente newStudente) {
  */
 studente pop(studenteStack *stack) {
     studente r;
+    stackElement *temp;
     
-    // TODO Implementa il corpo della funzione
+    r.cognome[0]=0; // Set cognome to empty string, in case of empty stack
+    r.nome[0]=0;    // Set nome to empty string, in case of empty stack
+
+    if(*stack != NULL) {
+        r = (*stack)->s;
+//        strcpy(r.nome, (*stack)->s.nome);
+//        strcpy(r.cognome, (*stack)->s.cognome);
+        temp = *stack;
+        *stack = (*stack)->next;
+        free(temp);
+    }
     
     return r;
 }

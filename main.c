@@ -19,9 +19,11 @@ int main(int argc, char** argv) {
     
     // Aggiunta degli elementi alla pila
     while(fread(&s, sizeof(studente), 1, inputFile) == 1) {
-        // s contiene i dati dello studente letto
-        
-        // TODO Implementa il codice per la gestione della chiamata a push
+        returnValue = push(&stack, s);
+        if(returnValue != 0) {
+            fprintf(stderr, "Si e' verificato un errore nell'aggiunta di un nuovo elemento.\n");
+            exit(-1);
+        }
     }
     fclose(inputFile);
     
