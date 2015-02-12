@@ -19,15 +19,14 @@ int push(studenteStack *stack, studente newStudente) {
         strcpy(nuovo->s.nome, newStudente.nome);
         
         nuovo->next = *stack;
-        *stack = nuovo;
-        
+        *stack = nuovo;   
                  
     }else{
         r=-1;
     }
     
     return r;
-}
+} //-1
 
 /*
  * Estrae un elemento dalla pila, rimuovendolo.
@@ -35,10 +34,9 @@ int push(studenteStack *stack, studente newStudente) {
  * Se la pila è vuota, l'elemento restituito ha nome e cognome di lunghezza 0.
  */
 studente pop(studenteStack *stack) {
-    studente r;
+    studente r = {0};
     
-    
-   stackElement * ultimo = NULL;
+    stackElement * ultimo = NULL;
     
     if(*stack != NULL){
         r = (*stack)->s;
@@ -47,7 +45,6 @@ studente pop(studenteStack *stack) {
         *stack = (*stack)->next;
         free(ultimo);
     }
-    
-    
+          
     return r;
-}
+} //-1
