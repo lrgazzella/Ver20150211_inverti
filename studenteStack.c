@@ -37,18 +37,16 @@ int push(studenteStack *stack, studente newStudente) {
 studente pop(studenteStack *stack) {
     studente r;
     
-    int i=0;
     
-    stackElement *elimina = *stack;
+   stackElement * ultimo = NULL;
     
-    while( *stack != NULL){
-        elimina = *stack;
+    if(*stack != NULL){
+        r = (*stack)->s;
+        
+        ultimo = *stack;
         *stack = (*stack)->next;
-        r = elimina->s;
-        free(elimina);
+        free(ultimo);
     }
-    
-   
     
     
     return r;
